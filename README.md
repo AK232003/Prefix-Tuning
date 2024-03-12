@@ -1,0 +1,5 @@
+This notebook demonstrates an example of prefix tuning, where learned embeddings allow for a comparatively low-memory method to fine-tune behavior in a large language model via encoding behavior/information in a small number of embedding tokens. This notebook demonstrates an example of fine-tuning GPT-2 XL to translate from French to English and vice versa. The way this works is essentially as follows: we learn two prefixes, [start_english] and [start_french]. When we want to translate a French sentence to English, we would input the following prompt to the language model:
+
+[start_french]Bonjour! Je m'appelle Sully.[start_english].
+
+We can also do the same task via few-shot prompting of the language model. At the end of this notebook, we compare (via BLEU-score) the performance of prefix-tuning with few-shot translation and show a marked improvement. Ideally, we would do a comparison of fine-tuning the whole model on the dataset vs. prefix-tuning, but I don't have enough GPU memory on my machine to do that test. Anyway, we see a ~2x improvement in BLEU score via prefix-tuning versus 3-shot prompting!
